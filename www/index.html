@@ -1,0 +1,432 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="Content-Security-Policy" content="default-src * data:; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
+    
+    <script src="components/jquery.1.9.1.js"></script>
+    
+    <script src="components/loader.js"></script>
+    
+    <link rel="stylesheet" href="components/loader.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    
+    <link rel="stylesheet" href="css/jquery.ui.datepicker.mobile.css" /> 
+    <script src="components/jQuery.ui.datepicker.js"></script>
+    <script src="components/jquery.ui.datepicker.mobile.js"></script>
+
+    <script src="components/d3.v3.min.js" charset="utf-8"></script>
+    <script src="app.js"></script>
+    
+</head>
+<body>
+
+    <ons-navigator var="myNavi" page="t1">
+    </ons-navigator> 
+
+<ons-template id="t1">
+    <ons-toolbar fixed-style>
+        <div class="left" style="width: 20%;"><div id="t1-exit"></div></div>
+        <div class="center" style="width: 60%;">システムログイン</div>
+        <div class="right" style="width: 20%;"></div>
+    </ons-toolbar>
+
+    <div style="text-align: center">
+    <p align="left">
+    </p>
+メールアドレス<input type="text" class="text-input" id="t1-user" style="width: 80%" value="">
+        <p>パスワード</p>
+        <input type="password" class="text-input" id="t1-pass" style="width: 80%" value="">
+        <p>
+        <ons-button onclick="myNavi.pushPage('p1');" >ログイン</ons-button>
+        </p>
+        <p>
+        <ons-button onclick="pgevent = 1;myNavi.pushPage('t2')" >無料登録</ons-button>
+        </p>
+        
+        <p>
+        <ons-button onclick="chk_cookie()" >クッキー確認</ons-button>
+        </p>
+<!--        <p>
+        <ons-button onclick="StatusBar.show();" >StatusBarShow</ons-button>
+        </p>
+        <p>
+        <ons-button onclick="StatusBar.hide();" >StatusBarHide</ons-button>
+        </p>
+-->
+    </div>
+  
+    <ons-bottom-toolbar style="height: 48px;" fixed-style>
+        <ons-row><ons-col></ons-col>
+        <ons-col><div class="bottom-bar__line-height" style="text-align: center;">システムログイン</div></ons-col>
+        <ons-col></ons-col></ons-row>
+    </ons-bottom-toolbar>
+    
+</ons-template>
+
+<ons-template id="t2">
+    <ons-toolbar fixed-style>
+        <div class="left" style="width: 20%;"><ons-back-button>戻る</ons-back-button></div>
+        <div class="center" style="width: 60%;">三祐システム無料登録</div>
+        <div class="right" style="width: 20%;"></div>
+    </ons-toolbar>
+
+    <div style="text-align: center">
+    <p align="left"></p>
+        <p>メールアドレス
+        </p>
+        <input type="text" class="text-input" id="t2-user" style="width: 80%" value="">
+        <p>パスワード</p>
+        <input type="password" class="text-input" id="t2-pass" style="width: 80%" value="">
+        <p>
+        <ons-button onclick="regist_server()" >無料登録</ons-button>
+        </p>
+        
+        
+    </div>
+  
+    <ons-bottom-toolbar style="height: 48px;" fixed-style>
+        <div class="left" style="width: 20%;"><ons-back-button>戻る</ons-back-button></div>
+        <ons-col><div class="bottom-bar__line-height" style="text-align: center;">三祐システム</div></ons-col>
+        <ons-col></ons-col></ons-row>
+    </ons-bottom-toolbar>
+    
+</ons-template>
+
+<ons-template id="y1">
+    <ons-toolbar fixed-style>
+        <div class="left" style="width: 20%;"><ons-back-button>戻る</ons-back-button></div>
+        <div class="center" style="width: 60%;">ユーザー管理</div>
+        <div class="right" style="width: 20%;"></div>
+    </ons-toolbar>
+
+    <div style="text-align: center"><BR>
+        <ons-row><ons-col>メールアドレス</ons-col></ons-row>
+        <ons-row><ons-col>
+        <input type="text" class="text-input" id="y1-email" style="width: 80%" value="">
+        </ons-col></ons-row>
+        <ons-row><ons-col>名前1</ons-col><ons-col>名前2</ons-col></ons-row>
+        <ons-row><ons-col>
+        <input type="text" class="text-input" id="y1-name1" style="width: 80%" value="">
+        </ons-col>
+        <ons-col>
+        <input type="text" class="text-input" id="y1-name2" style="width: 80%" value="">
+        </ons-col></ons-row>
+        <ons-row><ons-col>パスワード</ons-col></ons-row>
+        <ons-row><ons-col>
+        <input type="password" class="text-input" id="y1-pass" style="width: 80%" value="">
+        </ons-col></ons-row>
+        <p>
+        <ons-button onclick="regist_user()" >追加</ons-button>
+        </p>
+    </div>
+  
+    <ons-bottom-toolbar style="height: 48px;" fixed-style>
+        <div class="left" style="width: 20%;"><ons-back-button>戻る</ons-back-button></div>
+        <ons-col><div class="bottom-bar__line-height" style="text-align: center;">三祐システム</div></ons-col>
+        <ons-col></ons-col></ons-row>
+    </ons-bottom-toolbar>
+    
+</ons-template>
+
+
+<ons-template id="p1">
+    <ons-toolbar fixed-style>
+        <div class="left" style="width: 20%;"><ons-back-button>ログアウト</ons-back-button></div>
+        <div class="center" style="width: 60%;">システム設定</div>
+        <div class="right" style="width: 20%;"></div>
+    </ons-toolbar>
+
+    <div style="text-align: center">
+    <br>
+        <ons-button onclick="myNavi.pushPage('p2')" >在庫くん</ons-button>
+        <br>
+    </div>
+    
+    <div style="text-align: center">
+    <br>
+        <ons-button onclick="myNavi.pushPage('y1')" >ユーザー管理</ons-button>
+        <br>
+    </div>
+
+    <!-- ユーザー設定画面 -->
+      <ons-dialog modifier="material" var="dlgset" cancelable>
+      <ons-toolbar inline>
+        <div class="center">
+          ユーザー情報
+        </div>
+      </ons-toolbar>
+      <div style="text-align: center">
+      <ons-row><ons-col>E-Mail</ons-col><ons-col><input type="text" class="text-input" id="p1-mail" style="width: 80%" value=""></ons-col></ons-row>
+      <ons-row><ons-col>名前1</ons-col><ons-col>名前2</ons-col></ons-row>
+      <ons-row><ons-col><input type="text" class="text-input" id="p1-name1" style="width: 80%" value=""></ons-col>
+        <ons-col><input type="text" class="text-input" id="p1-name2" style="width: 80%" value=""></ons-col></ons-row>
+        <ons-row><ons-col align="center">パスワード</ons-col><ons-col><input type="password" class="text-input" id="p1-pass" style="width: 80%" value=""></ons-col></ons-row>
+        
+          <ons-button onclick="save_setting(); dlgset.hide()">保存</ons-button>
+          <ons-button onclick="dlgset.hide()">閉じる</ons-button>
+        </p>
+      </div>
+  </ons-dialog>
+
+
+    <ons-bottom-toolbar style="height: 48px;" fixed-style>
+        <ons-row><ons-col><ons-toolbar-button><ons-icon icon="ion-gear-b" size="48px" onclick="dlgset.show();"></ons-icon></ons-toolbar-button></ons-col>
+        <ons-col><div class="bottom-bar__line-height" style="text-align: center;">在庫くん</div></ons-col>
+        <ons-col></ons-col></ons-row>
+    </ons-bottom-toolbar>
+    
+</ons-template>
+
+<ons-template id="p2">
+
+
+  
+    <ons-toolbar fixed-style>
+        <div class="left" style="width: 20%;"><ons-back-button>ログアウト</ons-back-button></div>
+        <div class="center" style="width: 60%;">機能選択</div>
+        <div class="right" style="width: 20%;"></div>
+    </ons-toolbar>
+    <div style="text-align: center">
+        <p id="info2"></p>
+        <p id="info3"></p>
+  <p>
+        <ons-button modifier="large" onclick="myNavi.pushPage('p3',{animation: 'slide', func: 10}); dlgList.show();">本日出荷</ons-button>
+        </p>
+        <p>
+        <ons-button modifier="large" onclick="myNavi.pushPage('p3',{animation: 'slide', func: 20}); dlgList.show();">本日入出庫</ons-button>
+        </p>
+        <p>
+        <ons-button modifier="large" onclick="myNavi.pushPage('p3',{animation: 'slide', func: 0}); dlgList.show();">受注履歴</ons-button>
+        </p>
+        <!--
+        <p>
+        <ons-button modifier="large" onclick="myNavi.pushPage('p3',{animation: 'slide', func: 1})">売上</ons-button>
+        </p>
+        -->
+        <p>
+        <ons-button modifier="large" onclick="myNavi.pushPage('p3',{animation: 'slide', func: 2}); dlgList.show();">入出庫履歴</ons-button>
+        </p>
+        <ons-row><ons-col align="center">
+        <label for="date">対象日</label></ons-col>
+        <ons-col align="center"><input type="date" id="date" name="date" size="10" /></ons-col>
+        <ons-col align="center"><ons-button modifier="" onclick="myNavi.pushPage('p3',{animation: 'slide', func: 3}); dlgList.show();">実績在庫</ons-button></ons-col></ons-row>
+        <ons-row><ons-col align="center"><ons-button modifier="" onclick="myNavi.pushPage('p3',{animation: 'slide', func: 4}); dlgList.show();">全在庫</ons-button></ons-col></ons-row>
+        </p>
+    </div>
+    
+    <ons-bottom-toolbar style="height: 48px;" fixed-style>
+        <ons-row><ons-col><ons-back-button>ログアウト</ons-back-button></ons-col>
+        <ons-col><div class="bottom-bar__line-height" style="text-align: center;">在庫くん</div></ons-col>
+        <ons-col></ons-col></ons-row>
+    </ons-bottom-toolbar>
+      
+<ons-modal var="dlgList">
+    <div style="margin: auto 0%">
+        <div>
+            <p>
+                <ons-icon icon="ion-load-a" size="2x" spin="true"></ons-icon>
+            </p>
+            <p>データを受信中です...</p>
+        </div>
+    </div>
+</ons-modal>
+    
+</ons-template>
+
+
+<ons-template id="p3">
+    <ons-toolbar fixed-style>
+        <div class="left" style="width: 20%;"><ons-back-button>戻る</ons-back-button></div>
+        <div class="center" style="width: 60%;" id="p3-title"></div>
+        <div class="right" style="width: 20%;"></div>
+    </ons-toolbar>
+    
+    
+    <div style="text-align: center" id="p3list">    
+    </div>
+    
+    
+    <ons-bottom-toolbar style="height: 48px;" fixed-style>
+        <ons-row><ons-col><ons-back-button>戻る</ons-back-button></ons-col>
+        <ons-col><div class="bottom-bar__line-height" style="text-align: center;">在庫くん</div></ons-col>
+        <ons-col></ons-col></ons-row>
+    </ons-bottom-toolbar>
+    
+    <ons-modal var="dlgListAdd">
+    <div style="margin: auto 0%">
+        <div>
+            <p>
+                <ons-icon icon="ion-load-a" size="2x" spin="true"></ons-icon>
+            </p>
+            <p>データを受信中です...</p>
+        </div>
+    </div>
+    </ons-modal>
+    
+    <ons-modal var="dlgDetail">
+    <div style="margin: auto 0%">
+        <div>
+            <p>
+                <ons-icon icon="ion-load-a" size="2x" spin="true"></ons-icon>
+            </p>
+            <p>詳細情報受信中です...</p>
+        </div>
+    </div>
+    </ons-modal>
+    
+</ons-template>
+
+
+<ons-template id="p4">
+    <ons-toolbar fixed-style>
+        <div class="left" style="width: 20%;"><ons-back-button>戻る</ons-back-button></div>
+        <div class="center" style="width: 60%;" id="p4-title">詳細</div>
+        <div class="right" style="width: 20%;"></div>
+    </ons-toolbar>
+    
+    <!--
+    <div style="visibility:hidden" id="p4mode"></div>
+    <div style="visibility:hidden" id="p4func"></div>
+    <ons-button onclick="showDetail();">Debug</ons-button>
+    -->
+    
+    <div style="text-align: center">
+        <p id="info4"></p>
+    </div>
+    
+    <div style="visibility:hidden" id="p4mode"></div>
+    <div style="visibility:hidden" id="p4func"></div>
+    
+    <ons-bottom-toolbar style="height: 48px;" fixed-style>
+        <ons-row>
+        <ons-col><ons-back-button>戻る</ons-back-button></ons-col>
+        <ons-col align="center"><ons-toolbar-button><ons-icon icon="ion-camera" size="48px" onclick="dlgCamera.show(); camera(menuidx);"></ons-icon></ons-toolbar-button></ons-col>
+        <ons-col align="center">
+        <div class="progress"><div class="bar" style="background:green;width:0px;"></div></div>
+        </ons-col>
+        </ons-row>
+    </ons-bottom-toolbar>
+    
+    <ons-modal var="dlgImg">
+    <div style="margin: auto 0%">
+        <div>
+            <p>
+                <ons-icon icon="ion-load-c" size="2x" spin="true"></ons-icon>
+            </p>
+            <p>画像処理中です...</p>
+        </div>
+    </div>
+    </ons-modal>
+    
+    <ons-modal var="dlgCamera">
+    <div style="margin: auto 0%">
+        <div>
+            <p>
+                <ons-icon icon="ion-load-c" size="2x" spin="true"></ons-icon>
+            </p>
+            <p>画像処理中です...</p>
+            <p>
+            </p>
+        </div>
+    </div>
+    </ons-modal>
+    
+</ons-template>
+
+
+<ons-template id="p5">
+
+<script>
+/* zoom関連 */
+var zoom = d3.behavior.zoom()
+    .scale(1)
+    .scaleExtent([.1, 10])
+    .on("zoom", zoomed);
+
+var svg = d3.select("#resizeimg")
+    .call(zoom);
+
+function zoomed() {
+    var t = "translate(" + d3.event.translate[0] + 'px,' + d3.event.translate[1] +"px) " +
+        "scale(" + d3.event.scale + ',' + d3.event.scale + ")";
+    d3.select("img")
+        .style("transform-origin", "0 0")
+        .style("-moz-transform-origin", "0 0")
+        .style("-webkit-transform-origin", "0 0")
+        .style("-o-transform-origin", "0 0")
+        .style("-ms-transform-origin", "0 0")
+        .style("transform", t)
+        .style("-moz-transform", t)
+        .style("-webkit-transform", t)
+        .style("-o-transform", t)
+        .style("-ms-transform", t);
+}
+</script>
+    <ons-toolbar fixed-style>
+        <div class="left" style="width: 20%;"><ons-back-button>戻る</ons-back-button></div>
+        <div class="center" style="width: 60%;">登録画像</div>
+        <div class="right" style="width: 20%;"></div>
+    </ons-toolbar>
+ 
+
+    <div id="resizeimg">
+        <img src="" id="p5pic1" width="100%">
+    </div>
+
+    <ons-bottom-toolbar style="height: 48px;" fixed-style>
+        <ons-row>
+        <ons-col><ons-back-button>戻る</ons-back-button></ons-col>
+        <ons-col align="center"><ons-toolbar-button><ons-icon icon="ion-trash-b" size="48px" onclick="del_img();"></ons-icon></ons-toolbar-button></ons-col>
+        <ons-col></ons-col>
+        </ons-row>
+    </ons-bottom-toolbar>
+    
+    <ons-modal var="dlgImg2">
+        <div style="margin: auto 0%">
+        <div>
+            <p>
+                <ons-icon icon="ion-load-c" size="2x" spin="true"></ons-icon>
+            </p>
+            <p>画像構成中です...</p>
+        </div>
+        </div>
+    </ons-modal>
+    
+</ons-template>
+
+
+<ons-template id="p10">
+    <ons-toolbar fixed-style>
+        <div class="left" style="width: 20%;"><ons-back-button>戻る</ons-back-button></div>
+        <div class="center" style="width: 60%;">ユーザー管理</div>
+        <div class="right" style="width: 20%;"></div>
+    </ons-toolbar>
+    
+    <ons-bottom-toolbar style="height: 48px;" fixed-style>
+        <ons-row>
+        <ons-col><ons-back-button>戻る</ons-back-button></ons-col>
+        <ons-col align="center"><ons-toolbar-button><ons-icon icon="ion-trash-b" size="48px" onclick="del_img();"></ons-icon></ons-toolbar-button></ons-col>
+        <ons-col></ons-col>
+        </ons-row>
+    </ons-bottom-toolbar>
+    
+    <ons-modal var="dlgImg2">
+        <div style="margin: auto 0%">
+        <div>
+            <p>
+                <ons-icon icon="ion-load-c" size="2x" spin="true"></ons-icon>
+            </p>
+            <p>画像構成中です...</p>
+        </div>
+        </div>
+    </ons-modal>
+    
+</ons-template>
+
+
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+{
+    "plugins": [
+        "mobi.monaca.plugins.Monaca",
+        "mobi.monaca.plugins.datepicker@1.0.1"
+    ],
+    "framework_version": "3.5",
+    "xcode_version": "7",
+    "cordova_version": "6.2",
+    "plugin_settings": {
+        "cordova-plugin-crosswalk-webview": {
+            "variables": [
+                "XWALK_VERSION=18.48.477.13"
+            ]
+        }
+    },
+    "external_plugins": [
+        "cordova-plugin-whitelist@1.2.2",
+        "cordova-plugin-splashscreen@3.2.2",
+        "cordova-custom-config@2.0.3",
+        "cordova-plugin-camera@2.2.0",
+        "cordova-plugin-media@2.3.0",
+        "cordova-plugin-crosswalk-webview@1.7.2",
+        "cordova-plugin-statusbar@2.1.3"
+    ]
+}

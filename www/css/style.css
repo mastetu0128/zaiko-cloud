@@ -1,0 +1,56 @@
+/**/
+
+th {
+    font-size: 12px;
+    color: white;
+    background-color: purple;
+}
+.standsfor {
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  padding: 10px 0px 0px 10px;
+  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis; /* Opera9,10対応 */
+}
+.stndfor {
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  padding: 0px 0px 0px 0px;
+  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis; /* Opera9,10対応 */
+}
+.ttltxt {
+  color: red;
+}
+.rsimg{
+    width: 100%;
+    overflow: auto;
+}
+ons-list-item {
+  height: 44px;
+  overflow: hidden;
+}
+.todaylist{
+    color: red;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    padding: 10px 0px 0px 10px;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis; /* Opera9,10対応 */
+}
+.todaydetail{
+    color: red;
+    width: 100%;
+    white-space: nowrap;
+    /*overflow: hidden;*/
+    padding: 0px -0px 0px 0px;
+    /*text-overflow: ellipsis;*/
+    /*-o-text-overflow: ellipsis; /* Opera9,10対応 */
+}
+ons-dialog:not([modifier='material']) p {
+  margin-left: 10px;
+  margin-right: 10px;
+}
