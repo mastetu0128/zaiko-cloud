@@ -52,59 +52,6 @@ function scanBarcode() {
     console.log("code end");
 }
 
-// Enable pusher logging - don't include this in production
-//Pusher.logToConsole = true;
-//var pusher = new Pusher('b0b7e7c371bf263e4026', {
-    //encrypted: true
-//});
-//var channel = pusher.subscribe('test_channel');
-//channel.bind('my_event', function(data) {
-    //navigator.notification.vibrate(3000);
-    //media1.play();
-    //alert(data.message);
-    //ons.notification.alert({
-      //  messageHTML: data.message + '<BR>' + data.date,
-       // title: "新着情報",
-        //animation: "fade"
-//  });
-//});
-//
-//$(document).on('pinchin', '#p5img', function() {
-//        //console.log("pinchin");
-//        var imgbox = document.getElementById('p5pic1');
-//        if(imgsize > 100)
-//            imgsize -= 10;
-//        imgbox.style.width = imgsize + "%";
-//      })
-//      
-//$(document).on('pinchout', '#p5img', function() {
-//    //console.log("pinchout");
-//    var imgbox = document.getElementById('p5pic1');
-//    if(imgsize < 400)
-//        imgsize += 10;
-//    imgbox.style.width = imgsize + "%";
-//    var listElement = document.getElementById('p5img'); //My ons-list element
-//    ons.compile(listElement);       // update
-//  })
-//  
-//$(document).on('doubletap', '#p5img', function() {
-//    //console.log("pinchout");
-//    //alert('削除しますか?');
-//    var imgbox = document.getElementById('p5pic1');
-//    imgsize = 100;
-//    imgleft = 0;
-//    imgbox.style.width = imgsize + "%"; 
-//    imgbox.style.left = imgleft + "px"; 
-//});
-//
-//$(document).on('swiperight', '#p5pic1', function() {
-//    console.log("swipe_r");
-//});
-//
-//$(document).on('swipeleft', '#p5pic1', function() {
-//    console.log("swipe_l");
-//});
-
 /* サーバー接続情報をローカルに保存 */
 function save_setting(){
     umail = $("#p1-mail").val();
